@@ -22,7 +22,7 @@ class Playernew extends React.Component {
             OfferToReceiveAudio: true,
             OfferToReceiveVideo: true
         },
-        websocketURL: "wss://18.184.168.0:5080/VoxConnect/websocket",
+        websocketURL: "wss://connect.coderalabs.io:5443/VoxConnect/websocket",
         isShow: false
     };
 
