@@ -4,7 +4,7 @@ import WebRTCAdaptor from './js/webrtc_adaptor';
 import { useParams } from 'react-router'
 
 class Playernew extends React.Component {
-    webRTCAdaptor: ?Object = null;
+    webRTCAdaptor: ?WebRTCAdaptor = null;
 
     state: Object = {
         mediaConstraints: {
@@ -23,7 +23,7 @@ class Playernew extends React.Component {
             OfferToReceiveVideo: true
         },
         websocketURL: "wss://connect.coderalabs.io:5443/VoxConnect/websocket",
-        isShow: false
+        isPlaying: false
     };
 
     constructor(props) {
@@ -31,19 +31,18 @@ class Playernew extends React.Component {
     }
 
     componentDidMount(): void {
+        let streamId = this.props.match.params.streamId;
+        console.log(streamId)
+
         this.webRTCAdaptor = this.initiateWebrtc();
         this.setState({
-            isShow: true
+            streamName: streamId,
+            isPlaying: false
         });
     }
 
-    streamChangeHandler = ({ target: { value } }: Event): void => {
-        console.log(value);
-        this.setState({ streamName: value });
-    }
-
     onStartPlaying = (name: String): void => {
-        this.webRTCAdaptor.play(this.state.streamName, this.state.token);
+        this.webRTCAdaptor.joinRoom(this.state.streamName);
     }
 
     initiateWebrtc(): WebRTCAdaptor {
@@ -63,7 +62,7 @@ class Playernew extends React.Component {
                 } else if (info == "play_started") {
                     //joined the stream
                     console.log("play started");
-
+                    this.setState({ isPlaying: true })
 
                 } else if (info == "play_finished") {
                     //leaved the stream
@@ -112,32 +111,37 @@ class Playernew extends React.Component {
     }
 
     render() {
-        let streamId = this.props.match.params.streamId;
-        console.log(streamId)
-        const { streamName, isShow } = this.state;
+        const { streamName, isPlaying } = this.state;
 
         return (
             <>
                 <div className="Player">
-                    YOU ARE IN PLAY PAGE <br />
-                    <video id="remoteVideo" autoPlay controls playsInline></video>
-                    <br />
-                    <input type="text" onChange={this.streamChangeHandler} />
-                    {
-                        isShow ? (
-                            <button
-                                onClick={this.onStartPlaying.bind(this, streamName)}
-                                className="btn btn-primary"
-                                id="start_play_button"> Start
-                                Playing
-                            </button>
-                        ) : null
-                    }
-
+                    <div>
+                        <h1> {streamName} </h1>
+                    </div>
+                    <video hidden id="remoteVideo" autoPlay controls playsInline></video>
+                    <div>
+                        {
+                            isPlaying ? (
+                                <button
+                                    onClick={(aaa) => this.props.history.push("/")}
+                                    className="btn btn-primary"
+                                    id="start_play_button">
+                                    Disconnect
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={this.onStartPlaying.bind(this, streamName)}
+                                    className="btn btn-primary"
+                                    id="start_play_button">
+                                    Start Playing
+                                </button>
+                            )
+                        }
+                    </div>
                 </div>
                 <div />
             </>
-
         );
     }
 }

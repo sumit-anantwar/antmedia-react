@@ -5,9 +5,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: cornflowerblue;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.Player {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.InputField {
+  padding: 1em;
+}
+
+.btn-primary {
+  padding: 1em;
 }

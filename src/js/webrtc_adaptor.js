@@ -1429,6 +1429,7 @@ export default function WebRTCAdaptor(initialValues) {
 
         wsConn.onmessage = function (event) {
             var obj = JSON.parse(event.data);
+            console.log(obj)
 
             if (obj.command == "start") {
                 //this command is received first, when publishing so playmode is false
@@ -1467,6 +1468,12 @@ export default function WebRTCAdaptor(initialValues) {
                 thiz.callback(obj.definition, obj);
                 if (obj.definition == "play_finished" || obj.definition == "publish_finished") {
                     thiz.closePeerConnection(obj.streamId);
+                }
+                else if (obj.definition == "joinedTheRoom") {
+
+                    console.log(obj.streams[0])
+
+                    thiz.play(obj.streams[0])
                 }
             }
             else if (obj.command == "streamInformation") {
