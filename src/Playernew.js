@@ -23,7 +23,8 @@ class Playernew extends React.Component {
             OfferToReceiveVideo: true
         },
         websocketURL: "wss://connect.coderalabs.io:5443/VoxConnect/websocket",
-        isPlaying: false
+        isPlaying: false,
+        volume: 1
     };
 
     constructor(props) {
@@ -111,7 +112,7 @@ class Playernew extends React.Component {
     }
 
     render() {
-        const { streamName, isPlaying } = this.state;
+        const { streamName, isPlaying, volume } = this.state;
 
         return (
             <>
@@ -119,7 +120,9 @@ class Playernew extends React.Component {
                     <div>
                         <h1> {streamName} </h1>
                     </div>
-                    <video hidden id="remoteVideo" autoPlay controls playsInline></video>
+                    {
+                        <video hidden id="remoteVideo" autoPlay controls playsInline volume={volume}></video>
+                    }
                     <div>
                         {
                             isPlaying ? (
