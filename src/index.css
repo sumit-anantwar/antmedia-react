@@ -19,10 +19,22 @@ code {
   height: 100%;
 }
 
+input {
+  font-size: 150%;
+  text-align: center;
+  border-radius: 2ch;
+  text-transform: uppercase;
+}
+
 .InputField {
   padding: 1em;
+  margin-bottom: 1em;
 }
 
 .btn-primary {
-  padding: 1em;
+  padding: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-weight: 700;
+  font-size: 110%;
 }

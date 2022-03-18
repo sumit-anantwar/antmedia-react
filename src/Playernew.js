@@ -1,7 +1,7 @@
-import { React, Component, setState } from 'react';
-import './Player.css';
+import { React, Component } from 'react';
 import WebRTCAdaptor from './js/webrtc_adaptor';
-import { useParams } from 'react-router'
+import './Player.css';
+import logo from './vox_logo.svg';
 
 class Playernew extends Component {
     webRTCAdaptor: ?WebRTCAdaptor = null;
@@ -116,13 +116,15 @@ class Playernew extends Component {
         return (
             <>
                 <div className="Player">
-                    <div>
-                        <h1> {streamName} </h1>
-                    </div>
-                    {
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo" />
+
+                        <div className="InputField">
+                            <h1> {streamName} </h1>
+                        </div>
+
                         <video hidden id="remoteVideo" autoPlay controls playsInline></video>
-                    }
-                    <div>
+
                         {
                             isPlaying ? (
                                 <button
@@ -140,9 +142,8 @@ class Playernew extends Component {
                                 </button>
                             )
                         }
-                    </div>
+                    </header>
                 </div>
-                <div />
             </>
         );
     }

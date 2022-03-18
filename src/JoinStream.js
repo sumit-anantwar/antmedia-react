@@ -1,8 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './Player.css';
-import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import logo from './vox_logo.svg';
 
 class JoinStream extends React.Component {
 
@@ -26,19 +24,22 @@ class JoinStream extends React.Component {
         return (
             <>
                 <div className="Player">
-                    <br />
-                    <div className="InputField">
-                        < input type="text" onChange={this.streamChangeHandler} />
-                    </div>
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo" />
+                        <br />
+                        <div className="InputField">
+                            < input type="text" onChange={this.streamChangeHandler} />
+                        </div>
 
-                    {
-                        <button
-                            onClick={() => this.props.history.push("/" + streamName)}
-                            className="btn btn-primary"
-                            id="start_play_button">
-                            JOIN STREAM
-                        </button>
-                    }
+                        {
+                            <button
+                                onClick={() => this.props.history.push("/" + streamName.toUpperCase())}
+                                className="btn btn-primary"
+                                id="start_play_button">
+                                JOIN STREAM
+                            </button>
+                        }
+                    </header>
                 </div>
             </>
         );
