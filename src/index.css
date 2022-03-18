@@ -20,6 +20,7 @@ code {
 }
 
 input {
+  max-width: 75%;
   font-size: 150%;
   text-align: center;
   border-radius: 2ch;
