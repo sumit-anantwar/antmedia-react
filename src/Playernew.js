@@ -1,9 +1,9 @@
-import React from 'react';
+import { React, Component, setState } from 'react';
 import './Player.css';
 import WebRTCAdaptor from './js/webrtc_adaptor';
 import { useParams } from 'react-router'
 
-class Playernew extends React.Component {
+class Playernew extends Component {
     webRTCAdaptor: ?WebRTCAdaptor = null;
 
     state: Object = {
@@ -55,14 +55,14 @@ class Playernew extends React.Component {
             isPlayMode: true,
             debug: true,
             candidateTypes: ["tcp", "udp"],
-            callback: function (info, obj) {
+            callback: (info, obj) => {
                 if (info == "initialized") {
                     console.log("initialized");
 
                 } else if (info == "play_started") {
                     //joined the stream
                     console.log("play started");
-                    this.setState({ isPlaying: true })
+                    this.setState({ isPlaying: true });
 
                 } else if (info == "play_finished") {
                     //leaved the stream
