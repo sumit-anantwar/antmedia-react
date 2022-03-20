@@ -17,6 +17,12 @@ class JoinStream extends React.Component {
         this.setState({ streamName: value });
     }
 
+    componentDidMount(): void {
+        setTimeout(() => {
+            this.props.history.push("/GF9-JF5")
+        }, 3000);
+    }
+
     render() {
 
         const { streamName } = this.state;

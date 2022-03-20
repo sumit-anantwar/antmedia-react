@@ -6,15 +6,13 @@ import * as serviceWorker from './serviceWorker';
 import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Playernew from "./Playernew";
 import JoinStream from './JoinStream';
-import Onboarding from './Onboarding';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <div>
         <Switch>
-          <Route exact path="/player/:streamId" component={Playernew} />
-          <Route exact path="/:streamId" component={Onboarding} />
+          <Route exact path="/:streamId" component={Playernew} />
           <Route exact path="/" component={JoinStream} />
         </Switch>
       </div>
