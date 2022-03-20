@@ -12,8 +12,8 @@ ReactDOM.render(
     <Router>
       <div>
         <Switch>
-          <Route exact path="/" component={JoinStream} />
           <Route exact path="/:streamId" component={Playernew} />
+          <Route exact path="/" component={JoinStream} />
         </Switch>
       </div>
     </Router>
