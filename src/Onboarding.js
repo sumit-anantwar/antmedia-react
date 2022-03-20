@@ -32,4 +32,4 @@ class Onboarding extends React.Component {
     }
 }
 
-export default JoinStream;
+export default Onboarding;
