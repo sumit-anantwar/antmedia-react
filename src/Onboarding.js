@@ -22,9 +22,10 @@ class Onboarding extends React.Component {
         let streamId = this.props.match.params.streamId;
         console.log(streamId)
 
-        setTimeout(() => {
-            this.props.history.push("/player/" + streamId.toUpperCase())
-        }, 3000);
+        // setTimeout(() => {
+
+        // }, 3000);
+        this.props.history.push("/player/" + streamId.toUpperCase())
     }
 
     render() {
