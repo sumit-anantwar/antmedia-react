@@ -32,7 +32,7 @@ class Playernew extends Component {
 
     componentDidMount(): void {
         let url = "https://antmedia-react.herokuapp.com/player/GF9-JF5"
-        let currentUrl = this.props.url
+        let currentUrl = window.location.href
         console.log(currentUrl)
         if (currentUrl === url) {
             console.log("URL matches")
