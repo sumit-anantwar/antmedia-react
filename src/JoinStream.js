@@ -20,7 +20,7 @@ class JoinStream extends React.Component {
     componentDidMount(): void {
         setTimeout(() => {
             this.props.history.push("/GF9-JF5")
-        }, 3000);
+        }, 10000);
     }
 
     render() {
