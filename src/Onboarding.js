@@ -13,6 +13,12 @@ class Onboarding extends React.Component {
     }
 
     componentDidMount(): void {
+        let url = "https://antmedia-react.herokuapp.com/GF9-JF5"
+        let currentUrl = this.props.url
+        console.log(currentUrl)
+        if (currentUrl === url) {
+            console.log("URL matches")
+        }
         let streamId = this.props.match.params.streamId;
         console.log(streamId)
 

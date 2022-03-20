@@ -31,6 +31,12 @@ class Playernew extends Component {
     }
 
     componentDidMount(): void {
+        let url = "https://antmedia-react.herokuapp.com/player/GF9-JF5"
+        let currentUrl = this.props.url
+        console.log(currentUrl)
+        if (currentUrl === url) {
+            console.log("URL matches")
+        }
         let streamId = this.props.match.params.streamId;
         console.log(streamId)
 
